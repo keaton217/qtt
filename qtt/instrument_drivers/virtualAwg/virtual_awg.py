@@ -11,7 +11,7 @@ try:
 except:
     logging.debug('could not load KeysightM3202A driver')
     KeysightM3202A_AWG=None
-from qtt.instrument_drivers.virtualAwg.awgs.ZurichInstrumentsHDAWG8 import ZurichInstruments_HDAWG8
+from qtt.instrument_drivers.virtualAwg.awgs.ZurichInstrumentsHDAWG8 import ZurichInstrumentsHDAWG8
 
 
 class VirtualAwgError(Exception):
@@ -41,8 +41,8 @@ class VirtualAwg(Instrument):
                 self.awgs.append(Tektronix5014C_AWG(awg))
             elif type(awg).__name__ == 'Keysight_M3201A':
                 self.awgs.append(KeysightM3202A_AWG(awg))
-            elif type(awg).__name__ == 'ZI_HDAWG8':
-                self.awgs.append(ZurichInstruments_HDAWG8(awg))
+            elif type(awg).__name__ == 'ZIHDAWG8':
+                self.awgs.append(ZurichInstrumentsHDAWG8(awg))
             elif type(awg).__name__ == 'Mock':
                 self.awgs.append(Simulated_AWG(awg))
             else:
